@@ -40,7 +40,24 @@ train2=alldata2[:len(train)]
 test2=alldata2[len(train):]
 alldata2
 
+#종속변수 LabelEncoder
+labels=train['country_destination']
+y=le.fit_transform(labels)
+
 #모델링
 rf=RandomForestClassifier(n_jobs=-1)
-rf.fit(train2, train['country_destination'])
-result=rf.predict_proba(test2) #오류확인 - 추후 수정
+rf.fit(train2, y)
+result=rf.predict_proba(test2)
+
+#종속변수 값을 국가이름(문자열)로 재변환 시켜줘야함 & 평가방식 : 각 아이디 당 여행 예측 국가 높은 확률별로 상위 5개까지 데이터 기입할 것
+ids=[]
+cts=[]
+id_test=test['id']
+for i in range(len(id_test)):
+    idx=id_test[i]
+    ids+=[idx]*5
+    cts+=le.inverse_transform(np.argsort(result)[::-1])[:5].tolist()
+    
+#sub파일 생성
+sub=pd.DataFrame(np.column_stack((ids,cts)), columns=['id','country'])
+sub.to_csv('Airbnb.csv' , index=False)
