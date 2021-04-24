@@ -12,16 +12,6 @@ if answer==[]:
 answer.sort()
 print(answer)
 
-#2016년
-import pandas as pd
-import datetime as dt
-answer=['MON','TUE','WED','FRI','SAT','SUN']
-a=5
-b=24
-wday = dt.date(2016,a,b).weekday()
-wday
-answer[wday]
-
 #정수 내림차순으로 정렬하기
 n=118372
 a1=sorted(str(n), reverse=True)
