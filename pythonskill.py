@@ -190,3 +190,10 @@ import numpy as np
 np.array(my_list).flatten().tolist()
 
 #############################################################################################
+
+#순열과 조합
+import itertools
+mylist = [2,1]
+sorted(list(map(list, itertools.permutations(mylist)))) #itertools.permutations를 이용해 순열 조합 정렬
+
+#############################################################################################
