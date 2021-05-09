@@ -1,6 +1,5 @@
 #1번 문제
 s="23four5six7"
-dic = {'zero':0, 'one':1, 'two':2, 'three':3, 'four':4, 'five':5, 'six':6, 'seven':7, 'eight':8, 'nine':9}
 s=list(s)
 answer=[]
 for i in range(len(s)):
@@ -33,6 +32,7 @@ for i in range(len(s)):
 print(int(''.join(answer)))
 
 #1번 문제 다른 방법 시도 - 코드 간소화 시도 중
+dic = {'zero':0, 'one':1, 'two':2, 'three':3, 'four':4, 'five':5, 'six':6, 'seven':7, 'eight':8, 'nine':9}
 for i in range(len(s)):
     try:   
         if s[i+1].isnumeric() == True:
